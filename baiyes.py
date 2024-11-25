@@ -48,5 +48,18 @@ try:
     print("Confusion Matrix:")
     print(cm)
 
+    # Pengujian dengan kalimat input sendiri
+    test_sentence = "i want to kill myself"
+
+    # Transformasi kalimat ke dalam bentuk vektor TF-IDF
+    test_sentence_tfidf = vectorizer.transform([test_sentence])
+
+    # Prediksi kelas untuk kalimat tersebut
+    predicted_label = model.predict(test_sentence_tfidf)
+
+    # Menampilkan hasil prediksi
+    print(f"\nKalimat: {test_sentence}")
+    print(f"Prediksi: {'suicidal post' if predicted_label[0] == 'suicidal post' else 'not suicidal post'}")
+
 except Exception as e:
     print(f"Terjadi kesalahan: {e}")
